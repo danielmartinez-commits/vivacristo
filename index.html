@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#152238">
+  <meta name="description" content="Panel ejecutivo de rendimiento financiero del programa de referidos de NU-KO Capital">
+  <title>NU-KO Capital | Rendimiento financiero del programa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <div><div class="brand-name">NU-KO <span>CAPITAL</span></div><div class="brand-sub">INTELIGENCIA FINANCIERA</div></div>
+      </div>
+      <div class="side-label">PROGRAMA</div>
+      <a class="nav-item active" href="#resumen"><span class="nav-icon">▦</span> Resumen ejecutivo</a>
+      <a class="nav-item" href="#escenarios"><span class="nav-icon">◫</span> Análisis de escenarios</a>
+      <a class="nav-item" href="#metodologia"><span class="nav-icon">◎</span> Metodología</a>
+      <div class="sidebar-bottom">
+        <div class="status-dot"></div><span>Modelo financiero cargado</span>
+        <div class="sidebar-note">Programa de referidos<br><strong>Panel ejecutivo</strong></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="resumen">
+      <header class="topbar">
+        <div class="breadcrumb">Programas <span>/</span> Programa de referidos <span>/</span> <strong>Rendimiento</strong></div>
+        <div class="topbar-right"><span class="live-dot"></span> VISTA GENERAL <span class="topbar-divider"></span><span class="currency-label">USD</span></div>
+      </header>
+
+      <section class="page-heading">
+        <div>
+          <div class="eyebrow">RESUMEN FINANCIERO EJECUTIVO</div>
+          <h1>Rendimiento financiero<br class="mobile-break"> del programa</h1>
+          <p>Análisis de sostenibilidad financiera y retorno de los incentivos del programa de referidos.</p>
+        </div>
+        <div class="heading-actions">
+          <button class="button button-secondary" id="resetButton" type="button">↺ <span>Restablecer vista</span></button>
+          <button class="button button-primary" id="exportButton" type="button">↓ <span>Exportar resumen</span></button>
+        </div>
+      </section>
+
+      <section class="hero-grid">
+        <article class="retention-card">
+          <div class="card-overline">MARGEN AGREGADO RETENIDO <span class="info-dot" title="Margen neto retenido dividido entre ingresos brutos">i</span></div>
+          <div class="retention-value"><span id="retentionValue">73,3 %</span><span class="positive-pill"><span>↗</span> Retención positiva</span></div>
+          <div class="retention-track"><div class="retention-fill" id="retentionFill" style="width:73.3%"></div></div>
+          <div class="retention-footer"><span>Ingresos retenidos después de incentivos</span><strong id="retentionAmount">$1.938,50</strong></div>
+          <div class="hero-divider"></div>
+          <div class="hero-metrics">
+            <div><span>Volumen factorizado</span><strong id="factoredVolume">$71.500,00</strong></div>
+            <div><span>Ingresos brutos</span><strong id="grossRevenue">$2.645,50</strong></div>
+            <div><span>Créditos de incentivos</span><strong id="incentiveCredits">$707,00</strong></div>
+            <div><span>Margen neto retenido</span><strong class="mint" id="netRetained">$1.938,50</strong></div>
+          </div>
+        </article>
+
+        <article class="insight-card">
+          <div class="insight-top"><span class="insight-icon">✳</span><span class="insight-label">HALLAZGO PRINCIPAL</span></div>
+          <h2>La eficiencia supera al volumen.</h2>
+          <p>En el escenario de tres referidos, ACH retiene una mayor proporción de los ingresos después de incentivos, con el menor costo relativo y el mayor retorno estimado.</p>
+          <div class="insight-stat-row">
+            <div><span>Retorno estimado de ACH</span><strong id="achRoi">1.550,0 %</strong></div>
+            <div><span>Costo de incentivos</span><strong id="achCost">6,1 %</strong></div>
+          </div>
+          <a href="#escenarios" class="text-link">Explorar escenarios <span>→</span></a>
+        </article>
+      </section>
+
+      <section class="section-heading" id="escenarios">
+        <div><div class="eyebrow">COMPARACIÓN DE ESCENARIOS</div><h2>Ingresos vs. costo de incentivos vs. margen neto</h2><p>Compara los ingresos brutos, los créditos de incentivos y el margen retenido en cada escenario.</p></div>
+        <div class="chart-legend">
+          <span><i class="legend-dot revenue-dot"></i> Ingresos brutos</span>
+          <span><i class="legend-dot incentive-dot"></i> Costo de incentivos</span>
+          <span><i class="legend-dot net-dot"></i> Margen neto</span>
+        </div>
+      </section>
+
+      <section class="analysis-grid">
+        <article class="panel chart-panel">
+          <div class="panel-header"><div><h3>Desglose financiero</h3><p>USD · Comparación horizontal</p></div><span class="panel-menu">•••</span></div>
+          <div class="chart-wrap"><canvas id="scenarioChart" aria-label="Gráfico de barras horizontales que compara ingresos, costo de incentivos y margen neto por escenario"></canvas></div>
+          <div class="chart-footnote">Margen neto = ingresos brutos − créditos de incentivos.</div>
+        </article>
+
+        <article class="panel roi-panel">
+          <div class="panel-header"><div><h3>Perfil de costo de incentivos y retorno</h3><p>Selecciona un escenario para consultar sus indicadores.</p></div><span class="panel-menu">•••</span></div>
+          <div class="scenario-selector" role="group" aria-label="Seleccionar escenario">
+            <button type="button" class="scenario-tab" data-scenario="wire">Wire</button>
+            <button type="button" class="scenario-tab active" data-scenario="ach">ACH</button>
+            <button type="button" class="scenario-tab" data-scenario="annual">Máximo anual</button>
+          </div>
+          <div class="selected-scenario"><span class="selected-dot"></span><span id="selectedName">ACH — 3 referidos</span><span class="best-badge" id="bestBadge">MÁS EFICIENTE</span></div>
+          <div class="roi-primary">
+            <div><span>Retorno sobre incentivos (ROI)</span><strong id="selectedRoi">1.550,0 %</strong></div>
+            <div><span>Costo de incentivos / ingresos</span><strong id="selectedCost">6,1 %</strong></div>
+          </div>
+          <div class="roi-mini-grid">
+            <div class="mini-metric"><span>Ingresos brutos</span><strong id="selectedRevenue">$610,50</strong></div>
+            <div class="mini-metric"><span>Créditos de incentivos</span><strong id="selectedIncentive">$37,00</strong></div>
+            <div class="mini-metric"><span>Margen neto retenido</span><strong id="selectedNet">$573,50</strong></div>
+            <div class="mini-metric"><span>Ingresos / incentivo</span><strong id="selectedMultiple">16,50×</strong></div>
+          </div>
+          <div class="retained-visual">
+            <div class="retained-visual-header"><span>Distribución de ingresos</span><strong id="selectedRetention">93,9 % retenido</strong></div>
+            <div class="allocation-bar"><div class="allocation-net" id="allocationNet" style="width:93.9%"></div><div class="allocation-incentive" id="allocationIncentive" style="width:6.1%"></div></div>
+            <div class="allocation-legend"><span><i class="legend-dot net-dot"></i> Margen retenido</span><span><i class="legend-dot incentive-dot"></i> Incentivos</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel comparison-panel">
+        <div class="panel-header"><div><h3>Resumen comparativo de escenarios</h3><p>Indicadores de rendimiento de todos los escenarios modelados.</p></div><span class="table-tag">3 ESCENARIOS</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>ESCENARIO</th><th>INGRESOS BRUTOS</th><th>INCENTIVOS</th><th>MARGEN RETENIDO</th><th>ROI</th><th>COSTO DE INCENTIVOS</th><th></th></tr></thead>
+            <tbody id="scenarioTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="methodology" id="metodologia">
+        <div class="method-icon">i</div>
+        <div><strong>Metodología e interpretación</strong><p>ROI sobre incentivos = (ingresos brutos − incentivos) ÷ incentivos. Costo relativo de incentivos = incentivos ÷ ingresos brutos. Estos indicadores miden la economía de los incentivos, no la rentabilidad total de la compañía; excluyen costos de fondeo, gastos operativos, pérdidas crediticias e impuestos. El escenario ACH contempla USD 37 en créditos acumulados (USD 20 + USD 12 + USD 5). Los totales agregados suman los tres escenarios ilustrados y no representan necesariamente un único periodo operativo.</p></div>
+      </section>
+
+      <footer class="footer"><span>NU-KO CAPITAL <span class="footer-separator">/</span> PROGRAMA DE REFERIDOS</span><span>PANEL EJECUTIVO DE RENDIMIENTO <span class="footer-separator">·</span> USD</span></footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
